@@ -123,7 +123,6 @@ public class PixelPropsUtils {
             "com.riotgames.league.wildrifttw",
             "com.riotgames.league.wildriftvn",
             "com.netease.lztgglobal",
-
     };
 
     private static final String[] packagesToChangeMI11 = {
@@ -198,7 +197,6 @@ public class PixelPropsUtils {
         propsToChangeOP9P.put("DEVICE", "star");
         propsToChangeOP9P.put("PRODUCT", "star");
         propsToChangeOP9P.put("MODEL", "M2102K1G");
-   
     }
 
     public static void setProps(String packageName) {
