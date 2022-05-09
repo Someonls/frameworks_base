@@ -44,6 +44,7 @@ public class PixelPropsUtils {
     private static final Map<String, Object> propsToChangeXP5;
     private static final Map<String, Object> propsToChangeOP8P;
     private static final Map<String, Object> propsToChangeMI11;
+    private static final Map<String, Object> propsToChangeOP9P;
     private static final Map<String, ArrayList<String>> propsToKeep;
 
     private static final String[] packagesToChangePixel6 = {
@@ -122,6 +123,7 @@ public class PixelPropsUtils {
             "com.riotgames.league.wildrifttw",
             "com.riotgames.league.wildriftvn",
             "com.netease.lztgglobal",
+
     };
 
     private static final String[] packagesToChangeMI11 = {
@@ -132,6 +134,7 @@ public class PixelPropsUtils {
     // Codenames of devices using Star spoofing for apps
     private static final String[] starSpoofedCodenames = {
             "venus"
+            "lemonadep"
     };
 
     // Codenames for currently supported Pixels by Google
@@ -189,6 +192,13 @@ public class PixelPropsUtils {
         propsToChangeMI11.put("DEVICE", "star");
         propsToChangeMI11.put("PRODUCT", "star");
         propsToChangeMI11.put("MODEL", "M2102K1G");
+        propsToChangeOP9P = new HashMap<>();
+        propsToChangeOP9P.put("BRAND", "Xiaomi");
+        propsToChangeOP9P.put("MANUFACTURER", "Xiaomi");
+        propsToChangeOP9P.put("DEVICE", "star");
+        propsToChangeOP9P.put("PRODUCT", "star");
+        propsToChangeOP9P.put("MODEL", "M2102K1G");
+   
     }
 
     public static void setProps(String packageName) {
@@ -256,6 +266,14 @@ public class PixelPropsUtils {
                     setPropValue(key, value);
                 }
             }
+            if (packageName.equals(PACKAGE_NETFLIX) && (isStarSpoofedDevice)) {
+                if (DEBUG) Log.d(TAG, "Defining props for: " + packageName);
+                for (Map.Entry<String, Object> prop : propsToChangeOP9P.entrySet()) {
+                    String key = prop.getKey();
+                    Object value = prop.getValue();
+                    setPropValue(key, value);
+                }
+            }
             if (!SystemProperties.getBoolean("persist.sys.pixelprops.games", false))
                 return;
 
@@ -283,6 +301,13 @@ public class PixelPropsUtils {
             } else if (Arrays.asList(packagesToChangeMI11).contains(packageName)) {
                 if (DEBUG) Log.d(TAG, "Defining props for: " + packageName);
                 for (Map.Entry<String, Object> prop : propsToChangeMI11.entrySet()) {
+                    String key = prop.getKey();
+                    Object value = prop.getValue();
+                    setPropValue(key, value);
+                }
+            } else if (Arrays.asList(packagesToChangeOP9P).contains(packageName)) {
+                if (DEBUG) Log.d(TAG, "Defining props for: " + packageName);
+                for (Map.Entry<String, Object> prop : propsToChangeOP9P.entrySet()) {
                     String key = prop.getKey();
                     Object value = prop.getValue();
                     setPropValue(key, value);
