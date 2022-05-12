@@ -149,7 +149,6 @@ public class PixelPropsUtils {
     // Codenames of devices using Star spoofing for apps
     private static final String[] starSpoofedCodenames = {
             "venus"
-            "lemonadep"
     };
 
     // Codenames for currently supported Pixels by Google
@@ -269,20 +268,12 @@ public class PixelPropsUtils {
 
             if (SystemProperties.getBoolean("persist.sys.pixelprops.streaming", true)) {
                 if (Arrays.asList(streamingPackagesToChange).contains(packageName)) {
-                    propsToChange.putAll(propsToChangePixel6);
+                    propsToChange.putAll(propsToChangeOP9P);
                 }
             }
             if (packageName.equals(PACKAGE_NETFLIX) && (isStarSpoofedDevice)) {
                 if (DEBUG) Log.d(TAG, "Defining props for: " + packageName);
                 for (Map.Entry<String, Object> prop : propsToChangeMI11.entrySet()) {
-                    String key = prop.getKey();
-                    Object value = prop.getValue();
-                    setPropValue(key, value);
-                }
-            }
-            if (packageName.equals(PACKAGE_NETFLIX) && (isStarSpoofedDevice)) {
-                if (DEBUG) Log.d(TAG, "Defining props for: " + packageName);
-                for (Map.Entry<String, Object> prop : propsToChangeOP9P.entrySet()) {
                     String key = prop.getKey();
                     Object value = prop.getValue();
                     setPropValue(key, value);
@@ -315,13 +306,6 @@ public class PixelPropsUtils {
             } else if (Arrays.asList(packagesToChangeMI11).contains(packageName)) {
                 if (DEBUG) Log.d(TAG, "Defining props for: " + packageName);
                 for (Map.Entry<String, Object> prop : propsToChangeMI11.entrySet()) {
-                    String key = prop.getKey();
-                    Object value = prop.getValue();
-                    setPropValue(key, value);
-                }
-            } else if (Arrays.asList(packagesToChangeOP9P).contains(packageName)) {
-                if (DEBUG) Log.d(TAG, "Defining props for: " + packageName);
-                for (Map.Entry<String, Object> prop : propsToChangeOP9P.entrySet()) {
                     String key = prop.getKey();
                     Object value = prop.getValue();
                     setPropValue(key, value);
