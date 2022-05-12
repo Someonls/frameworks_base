@@ -44,6 +44,7 @@ public class PixelPropsUtils {
     private static final Map<String, Object> propsToChangeXP5;
     private static final Map<String, Object> propsToChangeOP8P;
     private static final Map<String, Object> propsToChangeMI11;
+    private static final Map<String, Object> propsToChangeOP9P;
     private static final Map<String, ArrayList<String>> propsToKeep;
 
     private static final String[] packagesToChangePixel6 = {
@@ -197,6 +198,12 @@ public class PixelPropsUtils {
         propsToChangeMI11.put("DEVICE", "star");
         propsToChangeMI11.put("PRODUCT", "star");
         propsToChangeMI11.put("MODEL", "M2102K1G");
+        propsToChangeOP9P = new HashMap<>();
+        propsToChangeOP9P.put("BRAND", "Xiaomi");
+        propsToChangeOP9P.put("MANUFACTURER", "Xiaomi");
+        propsToChangeOP9P.put("DEVICE", "star");
+        propsToChangeOP9P.put("PRODUCT", "star");
+        propsToChangeOP9P.put("MODEL", "M2102K1G");
     }
 
     public static void setProps(String packageName) {
@@ -253,7 +260,7 @@ public class PixelPropsUtils {
 
             if (SystemProperties.getBoolean("persist.sys.pixelprops.streaming", true)) {
                 if (Arrays.asList(streamingPackagesToChange).contains(packageName)) {
-                    propsToChange.putAll(propsToChangePixel6);
+                    propsToChange.putAll(propsToChangeOP9P);
                 }
             }
             if (packageName.equals(PACKAGE_NETFLIX) && (isStarSpoofedDevice)) {
