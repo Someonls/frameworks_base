@@ -57,7 +57,6 @@ public enum ScrimState {
     /**
      * On the lock screen.
      */
-
     KEYGUARD {
         @Override
         public void prepare(ScrimState previousState) {
